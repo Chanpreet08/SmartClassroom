@@ -1,0 +1,253 @@
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Sat Nov 18 15:23:09 IST 2017\ndistributionBase=GRADLE_USER_HOME\ndistributionPath=wrapper/dists\nzipStoreBase=GRADLE_USER_HOME\nzipStorePath=wrapper/dists\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-3.3-all.zip\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(date 1511053006000)
++++ gradle/wrapper/gradle-wrapper.properties	(revision )
+@@ -1,4 +1,8 @@
++<<<<<<< HEAD
+ #Sat Nov 18 15:23:09 IST 2017
++=======
++#Thu Nov 16 23:12:00 IST 2017
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    package=\"com.smartclassroom\">\n\n    <application\n        android:allowBackup=\"true\"\n        android:icon=\"@mipmap/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\n        android:supportsRtl=\"true\"\n        android:theme=\"@style/AppTheme\">\n        <activity\n            android:name=\".MainActivity\"\n            android:label=\"@string/app_name\"\n            android:theme=\"@style/AppTheme.NoActionBar\">\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(date 1511053006000)
++++ app/src/main/AndroidManifest.xml	(revision )
+@@ -9,10 +9,14 @@
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme">
++<<<<<<< HEAD
+         <activity
+             android:name=".MainActivity"
+             android:label="@string/app_name"
+             android:theme="@style/AppTheme.NoActionBar">
++=======
++        <activity android:name=".MainActivity">
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+ 
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\n\nandroid {\n    compileSdkVersion 25\n    buildToolsVersion \"25.0.0\"\n    defaultConfig {\n        applicationId \"com.smartclassroom\"\n        minSdkVersion 16\n        targetSdkVersion 25\n        versionCode 1\n        versionName \"1.0\"\n        testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\n    }\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\n        }\n    }\n}\n\ndependencies {\n    compile fileTree(dir: 'libs', include: ['*.jar'])\n    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {\n        exclude group: 'com.android.support', module: 'support-annotations'\n    })\n    compile 'com.android.support:appcompat-v7:25.3.1'\n    compile 'com.android.support:design:25.3.1'\n    compile 'com.android.support.constraint:constraint-layout:1.0.2'\n    testCompile 'junit:junit:4.12'\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(date 1511053006000)
++++ app/build.gradle	(revision )
+@@ -5,7 +5,11 @@
+     buildToolsVersion "25.0.0"
+     defaultConfig {
+         applicationId "com.smartclassroom"
++<<<<<<< HEAD
+         minSdkVersion 16
++=======
++        minSdkVersion 19
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+         targetSdkVersion 25
+         versionCode 1
+         versionName "1.0"
+@@ -25,7 +29,10 @@
+         exclude group: 'com.android.support', module: 'support-annotations'
+     })
+     compile 'com.android.support:appcompat-v7:25.3.1'
++<<<<<<< HEAD
+     compile 'com.android.support:design:25.3.1'
+     compile 'com.android.support.constraint:constraint-layout:1.0.2'
++=======
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+     testCompile 'junit:junit:4.12'
+ }
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<android.support.v4.widget.DrawerLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/drawer_layout\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:fitsSystemWindows=\"true\"\n    tools:openDrawer=\"start\">\n\n    <include\n        layout=\"@layout/app_bar_main\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\" />\n\n    <android.support.design.widget.NavigationView\n        android:id=\"@+id/nav_view\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"match_parent\"\n        android:layout_gravity=\"start\"\n        android:fitsSystemWindows=\"true\"\n        app:headerLayout=\"@layout/nav_header_main\"\n        app:menu=\"@menu/activity_main_drawer\" />\n\n</android.support.v4.widget.DrawerLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(date 1511053006000)
++++ app/src/main/res/layout/activity_main.xml	(revision )
+@@ -1,4 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
++<<<<<<< HEAD
+ <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+@@ -23,3 +24,19 @@
+         app:menu="@menu/activity_main_drawer" />
+ 
+ </android.support.v4.widget.DrawerLayout>
++=======
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context="com.smartclassroom.Activity.MainActivity">
++
++    <TextView
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Hello World!"
++        />
++
++</LinearLayout>
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\n    <string name=\"app_name\">SmartClassroom</string>\n\n    <string name=\"navigation_drawer_open\">Open navigation drawer</string>\n    <string name=\"navigation_drawer_close\">Close navigation drawer</string>\n\n    <string name=\"action_settings\">Settings</string>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(date 1511053006000)
++++ app/src/main/res/values/strings.xml	(revision )
+@@ -1,8 +1,11 @@
+ <resources>
+     <string name="app_name">SmartClassroom</string>
++<<<<<<< HEAD
+ 
+     <string name="navigation_drawer_open">Open navigation drawer</string>
+     <string name="navigation_drawer_close">Close navigation drawer</string>
+ 
+     <string name="action_settings">Settings</string>
++=======
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+ </resources>
+Index: app/src/main/res/values/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\n\n    <!-- Base application theme. -->\n    <style name=\"AppTheme\" parent=\"Theme.AppCompat.Light.DarkActionBar\">\n        <!-- Customize your theme here. -->\n        <item name=\"colorPrimary\">@color/colorPrimary</item>\n        <item name=\"colorPrimaryDark\">@color/colorPrimaryDark</item>\n        <item name=\"colorAccent\">@color/colorAccent</item>\n    </style>\n\n    <style name=\"AppTheme.NoActionBar\">\n        <item name=\"windowActionBar\">false</item>\n        <item name=\"windowNoTitle\">true</item>\n    </style>\n\n    <style name=\"AppTheme.AppBarOverlay\" parent=\"ThemeOverlay.AppCompat.Dark.ActionBar\" />\n\n    <style name=\"AppTheme.PopupOverlay\" parent=\"ThemeOverlay.AppCompat.Light\" />\n\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/styles.xml	(date 1511053006000)
++++ app/src/main/res/values/styles.xml	(revision )
+@@ -8,6 +8,7 @@
+         <item name="colorAccent">@color/colorAccent</item>
+     </style>
+ 
++<<<<<<< HEAD
+     <style name="AppTheme.NoActionBar">
+         <item name="windowActionBar">false</item>
+         <item name="windowNoTitle">true</item>
+@@ -17,4 +18,6 @@
+ 
+     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+ 
++=======
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+ </resources>
+Index: app/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Add project specific ProGuard rules here.\n# By default, the flags in this file are appended to flags specified\n# in C:\\Users\\Chanpreet\\AppData\\Local\\Android\\Sdk/tools/proguard/proguard-android.txt\n# You can edit the include path and order by changing the proguardFiles\n# directive in build.gradle.\n#\n# For more details, see\n#   http://developer.android.com/guide/developing/tools/proguard.html\n\n# Add any project specific keep options here:\n\n# If your project uses WebView with JS, uncomment the following\n# and specify the fully qualified class name to the JavaScript interface\n# class:\n#-keepclassmembers class fqcn.of.javascript.interface.for.webview {\n#   public *;\n#}\n\n# Uncomment this to preserve the line number information for\n# debugging stack traces.\n#-keepattributes SourceFile,LineNumberTable\n\n# If you keep the line number information, uncomment this to\n# hide the original source file name.\n#-renamesourcefileattribute SourceFile\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/proguard-rules.pro	(date 1511053006000)
++++ app/proguard-rules.pro	(revision )
+@@ -1,6 +1,10 @@
+ # Add project specific ProGuard rules here.
+ # By default, the flags in this file are appended to flags specified
++<<<<<<< HEAD
+ # in C:\Users\Chanpreet\AppData\Local\Android\Sdk/tools/proguard/proguard-android.txt
++=======
++# in /home/cc/Android/Sdk/tools/proguard/proguard-android.txt
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+ # You can edit the include path and order by changing the proguardFiles
+ # directive in build.gradle.
+ #
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectModuleManager\">\n    <modules>\n      <module fileurl=\"file://$PROJECT_DIR$/SmartClassroom2.iml\" filepath=\"$PROJECT_DIR$/SmartClassroom2.iml\" />\n      <module fileurl=\"file://$PROJECT_DIR$/app/app.iml\" filepath=\"$PROJECT_DIR$/app/app.iml\" />\n    </modules>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(date 1511053006000)
++++ .idea/modules.xml	(revision )
+@@ -2,7 +2,13 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
++<<<<<<< HEAD
+       <module fileurl="file://$PROJECT_DIR$/SmartClassroom2.iml" filepath="$PROJECT_DIR$/SmartClassroom2.iml" />
++=======
++      <module fileurl="file://$PROJECT_DIR$/SmartClassroom.iml" filepath="$PROJECT_DIR$/SmartClassroom.iml" />
++      <module fileurl="file://$PROJECT_DIR$/SmartClassroom.iml" filepath="$PROJECT_DIR$/SmartClassroom.iml" />
++      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+     </modules>
+   </component>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"EntryPointsManager\">\n    <entry_points version=\"2.0\" />\n  </component>\n  <component name=\"NullableNotNullManager\">\n    <option name=\"myDefaultNullable\" value=\"android.support.annotation.Nullable\" />\n    <option name=\"myDefaultNotNull\" value=\"android.support.annotation.NonNull\" />\n    <option name=\"myNullables\">\n      <value>\n        <list size=\"4\">\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\n        </list>\n      </value>\n    </option>\n    <option name=\"myNotNulls\">\n      <value>\n        <list size=\"4\">\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\n        </list>\n      </value>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1511053006000)
++++ .idea/misc.xml	(revision )
+@@ -27,7 +27,21 @@
+       </value>
+     </option>
+   </component>
++<<<<<<< HEAD
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++=======
++  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
++    <OptionsSetting value="true" id="Add" />
++    <OptionsSetting value="true" id="Remove" />
++    <OptionsSetting value="true" id="Checkout" />
++    <OptionsSetting value="true" id="Update" />
++    <OptionsSetting value="true" id="Status" />
++    <OptionsSetting value="true" id="Edit" />
++    <ConfirmationsSetting value="0" id="Add" />
++    <ConfirmationsSetting value="0" id="Remove" />
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++>>>>>>> a1b528e4572bd6bf53219b79a4b8e15750511fc2
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/src/main/java/com/smartclassroom/Activity/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/smartclassroom/Activity/MainActivity.java	(revision )
++++ app/src/main/java/com/smartclassroom/Activity/MainActivity.java	(revision )
+@@ -0,0 +1,17 @@
++package com.smartclassroom.Activity;
++
++import android.support.v7.app.AppCompatActivity;
++import android.os.Bundle;
++
++import com.smartclassroom.R;
++
++public class MainActivity extends AppCompatActivity {
++
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_main);
++
++    }
++}
