@@ -1,0 +1,46 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\n\nandroid {\n    compileSdkVersion 25\n    buildToolsVersion \"26.0.1\"\n    defaultConfig {\n        applicationId \"com.smartclassroom\"\n        minSdkVersion 16\n        targetSdkVersion 25\n        versionCode 1\n        versionName \"1.0\"\n        testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\n    }\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\n        }\n    }\n}\n\ndependencies {\n    compile fileTree(dir: 'libs', include: ['*.jar'])\n    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {\n        exclude group: 'com.android.support', module: 'support-annotations'\n    })\n    compile 'com.android.support:appcompat-v7:25.3.1'\n    compile 'com.android.support:design:25.3.1'\n    compile 'com.android.support.constraint:constraint-layout:1.0.2'\n    testCompile 'junit:junit:4.12'\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(date 1510998924000)
++++ app/build.gradle	(revision )
+@@ -2,7 +2,7 @@
+ 
+ android {
+     compileSdkVersion 25
+-    buildToolsVersion "26.0.1"
++    buildToolsVersion "25.0.0"
+     defaultConfig {
+         applicationId "com.smartclassroom"
+         minSdkVersion 16
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"EntryPointsManager\">\n    <entry_points version=\"2.0\" />\n  </component>\n  <component name=\"NullableNotNullManager\">\n    <option name=\"myDefaultNullable\" value=\"android.support.annotation.Nullable\" />\n    <option name=\"myDefaultNotNull\" value=\"android.support.annotation.NonNull\" />\n    <option name=\"myNullables\">\n      <value>\n        <list size=\"4\">\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\n        </list>\n      </value>\n    </option>\n    <option name=\"myNotNulls\">\n      <value>\n        <list size=\"4\">\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\n        </list>\n      </value>\n    </option>\n  </component>\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"false\">\n    <OptionsSetting value=\"true\" id=\"Add\" />\n    <OptionsSetting value=\"true\" id=\"Remove\" />\n    <OptionsSetting value=\"true\" id=\"Checkout\" />\n    <OptionsSetting value=\"true\" id=\"Update\" />\n    <OptionsSetting value=\"true\" id=\"Status\" />\n    <OptionsSetting value=\"true\" id=\"Edit\" />\n    <ConfirmationsSetting value=\"0\" id=\"Add\" />\n    <ConfirmationsSetting value=\"0\" id=\"Remove\" />\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" default=\"true\" assert-keyword=\"true\" jdk-15=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1510998924000)
++++ .idea/misc.xml	(revision )
+@@ -27,17 +27,7 @@
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+-    <OptionsSetting value="true" id="Add" />
+-    <OptionsSetting value="true" id="Remove" />
+-    <OptionsSetting value="true" id="Checkout" />
+-    <OptionsSetting value="true" id="Update" />
+-    <OptionsSetting value="true" id="Status" />
+-    <OptionsSetting value="true" id="Edit" />
+-    <ConfirmationsSetting value="0" id="Add" />
+-    <ConfirmationsSetting value="0" id="Remove" />
+-  </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
