@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               Intent slidesIntent = new Intent(MainActivity.this,SlidesActivity.class);
+               startActivity(slidesIntent);
             }
         });
 
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity
 
         server = new LocalStreamServer( new File(Environment
                 .getExternalStoragePublicDirectory(Environment
-                        .DIRECTORY_DOWNLOADS) + "/video.mp4"));
+                        .DIRECTORY_DOWNLOADS) + "/video1.mp4"));
         WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);
         String deviceIp = android.text.format.Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         server.init(deviceIp);
@@ -333,17 +333,11 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.slides) {
 
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
