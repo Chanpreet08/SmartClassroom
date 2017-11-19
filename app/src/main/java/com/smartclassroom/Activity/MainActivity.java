@@ -1,5 +1,6 @@
-package com.smartclassroom;
+package com.smartclassroom.Activity;
 
+import com.smartclassroom.R;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.media.MediaRecorder;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -41,7 +43,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.smartclassroom.Thread.LocalStreamServer;
+
+import java.io.File;
 import java.io.IOException;
+import java.util.Formatter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "MainActivity";
     private static final int REQUEST_PERMISSIONS = 10;
     private static final int REQUEST_CODE = 1000;
+    private LocalStreamServer server;
 
     static {
         ORIENTATIONS.append(Surface.ROTATION_0, 90);
@@ -99,6 +106,14 @@ public class MainActivity extends AppCompatActivity
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         screenDensity = metric.densityDpi;
         mediaRecorder = new MediaRecorder();
+
+        server = new LocalStreamServer( new File(Environment
+                .getExternalStoragePublicDirectory(Environment
+                        .DIRECTORY_DOWNLOADS) + "/video.mp4"));
+        WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);
+        String deviceIp = android.text.format.Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        server.init(deviceIp);
+
         mediaProjectionManager = (MediaProjectionManager)getSystemService(Context.MEDIA_PROJECTION_SERVICE);
 
         castingButton.setOnClickListener(new View.OnClickListener() {
@@ -163,11 +178,13 @@ public class MainActivity extends AppCompatActivity
         if (((ToggleButton) view).isChecked()) {
             initRecorder();
             shareScreen();
+            startStreaming();
         } else {
             mediaRecorder.stop();
             mediaRecorder.reset();
             Log.v(TAG, "Stopping Recording");
             stopScreenSharing();
+            stopStreaming();
         }
     }
     private VirtualDisplay createVirtualDisplay() {
@@ -221,6 +238,10 @@ public class MainActivity extends AppCompatActivity
     public void onDestroy() {
         super.onDestroy();
         destroyMediaProjection();
+        if (null != server && server.isRunning()) {
+            server.stop();
+            server = null;
+        }
     }
 
     private void destroyMediaProjection() {
@@ -260,6 +281,18 @@ public class MainActivity extends AppCompatActivity
                 return;
             }
         }
+    }
+
+    public void stopStreaming() {
+        if (null != server)
+            server.stop();
+        //((TextView) findViewById(R.id.status)).setText("");
+    }
+
+    public void startStreaming() {
+        if (null != server && !server.isRunning())
+            server.start();
+        welcomeText.setText(server.getFileUrl().toString());
     }
 
     @Override
