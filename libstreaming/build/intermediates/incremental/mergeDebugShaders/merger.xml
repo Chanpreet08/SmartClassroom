@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/media/cc/Study and softwares/7 sem/Percom/SmartClassroom2/libstreaming/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/media/cc/Study and softwares/7 sem/Percom/SmartClassroom2/libstreaming/src/debug/shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/home/cc/Desktop/SmartClassroom/libstreaming/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/home/cc/Desktop/SmartClassroom/libstreaming/src/debug/shaders"/></dataSet></merger>

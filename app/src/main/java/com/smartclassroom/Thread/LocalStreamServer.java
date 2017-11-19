@@ -25,13 +25,10 @@ import java.util.StringTokenizer;
 
 import android.util.Log;
 
-/**
- * A single-connection HTTP server that will respond to requests for files and
- * pull them from the application's SD card.
- */
+
 public class LocalStreamServer implements Runnable {
     private static final String TAG = LocalStreamServer.class.getName();
-    private int port = 0;
+    private int port = 8080;
     private boolean isRunning = false;
     private ServerSocket socket;
     private Thread thread;
@@ -39,26 +36,17 @@ public class LocalStreamServer implements Runnable {
     private boolean seekRequest;
     private File mMovieFile;
 
-    /**
-     * This server accepts HTTP request and returns files from device.
-     */
+
     public LocalStreamServer(File file) {
         mMovieFile = file;
     }
 
-    /**
-     * @return A port number assigned by the OS.
-     */
+
     public int getPort() {
         return port;
     }
 
-    /**
-     * Prepare the server to start.
-     * <p>
-     * This only needs to be called once per instance. Once initialized, the
-     * server can be started and stopped as needed.
-     */
+
     public String init(String ip) {
         String url = null;
         try {
@@ -67,7 +55,7 @@ public class LocalStreamServer implements Runnable {
             socket = new ServerSocket(port, 0, InetAddress.getByAddress(bytes));
 
             socket.setSoTimeout(10000);
-            port = socket.getLocalPort();
+            //port = socket.getLocalPort();
             url = "http://" + socket.getInetAddress().getHostAddress() + ":"
                     + port;
             Log.e(TAG, "Server started at " + url);
@@ -84,21 +72,13 @@ public class LocalStreamServer implements Runnable {
                 + port + "/" + mMovieFile.getName();
     }
 
-    /**
-     * Start the server.
-     */
+
     public void start() {
         thread = new Thread(this);
         thread.start();
         isRunning = true;
     }
 
-    /**
-     * Stop the server.
-     * <p>
-     * This stops the thread listening to the port. It may take up to five
-     * seconds to close the service and this call blocks until that occurs.
-     */
     public void stop() {
         isRunning = false;
         if (thread == null) {
@@ -109,20 +89,11 @@ public class LocalStreamServer implements Runnable {
         thread.interrupt();
     }
 
-    /**
-     * Determines if the server is running (i.e. has been <code>start</code>ed
-     * and has not been <code>stop</code>ed.
-     *
-     * @return <code>true</code> if the server is running, otherwise
-     * <code>false</code>
-     */
     public boolean isRunning() {
         return isRunning;
     }
 
-    /**
-     * This is used internally by the server and should not be called directly.
-     */
+
     @Override
     public void run() {
         Log.e(TAG, "running");
@@ -148,10 +119,7 @@ public class LocalStreamServer implements Runnable {
         Log.e(TAG, "Server interrupted or stopped. Shutting down.");
     }
 
-    /**
-     * Find byte index separating header from body. It must be the last byte of
-     * the first two sequential new lines.
-     **/
+
     private int findHeaderEnd(final byte[] buf, int rlen) {
         int splitbyte = 0;
         while (splitbyte + 3 < rlen) {
@@ -163,10 +131,7 @@ public class LocalStreamServer implements Runnable {
         return 0;
     }
 
-    /*
-     * Sends the HTTP response to the client, including headers (as applicable)
-     * and content.
-     */
+
     private void processRequest(ExternalResourceDataSource dataSource,
                                 Socket client) throws IllegalStateException, IOException {
         if (dataSource == null) {
@@ -190,7 +155,7 @@ public class LocalStreamServer implements Runnable {
             }
         }
 
-        // Create a BufferedReader for parsing the header.
+
         ByteArrayInputStream hbis = new ByteArrayInputStream(buf, 0, rlen);
         BufferedReader hin = new BufferedReader(new InputStreamReader(hbis));
         Properties pre = new Properties();
@@ -294,10 +259,7 @@ public class LocalStreamServer implements Runnable {
         }
     }
 
-    /**
-     * Decodes the sent headers and loads the data into java Properties' key -
-     * value pairs
-     **/
+
     private void decodeHeader(BufferedReader in, Properties pre,
                               Properties parms, Properties header) throws InterruptedException {
         try {
@@ -349,13 +311,7 @@ public class LocalStreamServer implements Runnable {
         }
     }
 
-    /**
-     * Decodes parameters in percent-encoded URI-format ( e.g.
-     * "name=Jack%20Daniels&pass=Single%20Malt" ) and adds them to given
-     * Properties. NOTE: this doesn't support multiple identical keys due to the
-     * simplicity of Properties -- if you need multiples, you might want to
-     * replace the Properties with a Hashtable of Vectors or such.
-     */
+
     private void decodeParms(String parms, Properties p)
             throws InterruptedException {
         if (parms == null)
@@ -371,10 +327,7 @@ public class LocalStreamServer implements Runnable {
         }
     }
 
-    /**
-     * Decodes the percent encoding scheme. <br/>
-     * For example: "an+example%20string" -> "an example string"
-     */
+
     private String decodePercent(String str) throws InterruptedException {
         try {
             StringBuffer sb = new StringBuffer();
@@ -401,9 +354,7 @@ public class LocalStreamServer implements Runnable {
         }
     }
 
-    /**
-     * provides meta-data and access to a stream for resources on SD card.
-     */
+
     protected class ExternalResourceDataSource {
 
         private FileInputStream inputStream;
@@ -415,25 +366,13 @@ public class LocalStreamServer implements Runnable {
             Log.e(TAG, "respurcePath is: " + mMovieFile.getPath());
         }
 
-        /**
-         * Returns a MIME-compatible content type (e.g. "text/html") for the
-         * resource. This method must be implemented.
-         *
-         * @return A MIME content type.
-         */
+
         public String getContentType() {
             // TODO: Support other media if we need to
             return "video/mp4";
         }
 
-        /**
-         * Creates and opens an input stream that returns the contents of the
-         * resource. This method must be implemented.
-         *
-         * @return An <code>InputStream</code> to access the resource.
-         * @throws IOException If the implementing class produces an error when opening
-         *                     the stream.
-         */
+
         public InputStream createInputStream() throws IOException {
             // NB: Because createInputStream can only be called once per asset
             // we always create a new file descriptor here.
@@ -441,16 +380,7 @@ public class LocalStreamServer implements Runnable {
             return inputStream;
         }
 
-        /**
-         * Returns the length of resource in bytes.
-         * <p>
-         * By default this returns -1, which causes no content-type header to be
-         * sent to the client. This would make sense for a stream content of
-         * unknown or undefined length. If your resource has a defined length
-         * you should override this method and return that.
-         *
-         * @return The length of the resource in bytes.
-         */
+
         public long getContentLength(boolean ignoreSimulation) {
             if (!ignoreSimulation) {
                 return -1;

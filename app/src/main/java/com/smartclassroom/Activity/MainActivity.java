@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity
 
         server = new LocalStreamServer( new File(Environment
                 .getExternalStoragePublicDirectory(Environment
-                        .DIRECTORY_DOWNLOADS) + "/video1.mp4"));
+                        .DIRECTORY_DOWNLOADS) + "/stream"));
         WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);
         String deviceIp = android.text.format.Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
         server.init(deviceIp);
@@ -155,9 +155,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -215,7 +213,7 @@ public class MainActivity extends AppCompatActivity
             mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
             mediaRecorder.setOutputFile(Environment
                     .getExternalStoragePublicDirectory(Environment
-                            .DIRECTORY_DOWNLOADS) + "/video.mp4");
+                            .DIRECTORY_DOWNLOADS) + "/stream.mp4");
             mediaRecorder.setVideoSize(screenWidth, screenHeight);
             mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
             mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
@@ -289,13 +287,13 @@ public class MainActivity extends AppCompatActivity
     public void stopStreaming() {
         if (null != server)
             server.stop();
-        //((TextView) findViewById(R.id.status)).setText("");
+       welcomeText.setText("Click on Floating button to start a new presentation");
     }
 
     public void startStreaming() {
         if (null != server && !server.isRunning())
             server.start();
-        welcomeText.setText(server.getFileUrl().toString());
+        welcomeText.setText("The server will be running on the following ip address " + server.getFileUrl().toString());
     }
 
     @Override
