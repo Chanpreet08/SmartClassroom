@@ -289,10 +289,6 @@ public class LocalStreamServer implements Runnable {
             } else
                 uri = decodePercent(uri);
 
-            // If there's another token, it's protocol version,
-            // followed by HTTP headers. Ignore version but parse headers.
-            // NOTE: this now forces header names lowercase since they are
-            // case insensitive and vary by client.
             if (st.hasMoreTokens()) {
                 String line = in.readLine();
                 while (line != null && line.trim().length() > 0) {
@@ -374,8 +370,6 @@ public class LocalStreamServer implements Runnable {
 
 
         public InputStream createInputStream() throws IOException {
-            // NB: Because createInputStream can only be called once per asset
-            // we always create a new file descriptor here.
             getInputStream();
             return inputStream;
         }
